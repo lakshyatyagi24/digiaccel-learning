@@ -35,3 +35,6 @@ Thumbs.db
 
 # Prisma
 backend/generated/
+
+# Git worktrees (isolated task workspaces)
+.worktrees/
