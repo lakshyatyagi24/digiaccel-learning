@@ -20,16 +20,10 @@
     "@commitlint/cli": "^19.5.0",
     "@commitlint/config-conventional": "^19.5.0",
     "husky": "^9.1.7",
-    "lint-staged": "^15.2.10"
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.9.6"
   },
   "lint-staged": {
-    "backend/**/*.ts": [
-      "bash -c 'cd backend && npx eslint --fix'",
-      "bash -c 'cd backend && npx prettier --write'"
-    ],
-    "frontend/**/*.{ts,tsx}": [
-      "bash -c 'cd frontend && npx eslint --fix'",
-      "bash -c 'cd frontend && npx prettier --write'"
-    ]
+    "*.{ts,tsx,js,mjs,json,md}": "prettier --write --ignore-unknown"
   }
 }

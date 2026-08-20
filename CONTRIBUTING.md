@@ -18,13 +18,22 @@ Template at `.gitmessage` — configure with `git config commit.template .gitmes
 
 ## Pre-commit checks (mandatory, hook-enforced)
 
-`lint-staged` runs on every commit:
+`lint-staged` runs Prettier (`--write`) on every staged `.ts`/`.tsx`/`.js`/`.json`/`.md` file on
+every commit. No `--no-verify` bypass.
 
-- ESLint (`--fix`)
-- Prettier (`--write`)
-- `tsc --noEmit` on touched packages
+Full ESLint (type-aware, project-wide) and `tsc --noEmit` are **not** run per-commit — both
+backend and frontend ESLint configs use typed-linting rules that need full project context
+(`parserOptions.project`), which doesn't work reliably against an arbitrary per-file staged-list
+the way Prettier does. Run them explicitly before pushing:
 
-A failing check blocks the commit. No `--no-verify` bypass.
+```bash
+npm run lint:backend && npm run lint:frontend
+cd backend && npx tsc --noEmit
+cd frontend && npx tsc --noEmit
+```
+
+CI (`.github/workflows/ci.yml`) runs both on every push, so a lint/type error can't reach `main`
+even though it isn't blocked at commit time.
 
 ## Code rules (mandatory)
 
