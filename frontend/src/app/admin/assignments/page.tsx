@@ -178,7 +178,10 @@ export default function AdminAssignmentsPage() {
                                 : "neutral"
                           }
                         >
-                          {a.progress?.status ?? "NOT_STARTED"}
+                          {(a.progress?.status ?? "NOT_STARTED").replace(
+                            "_",
+                            " ",
+                          )}
                         </Badge>
                       </td>
                       <td className="px-4 py-3 text-slate-500">

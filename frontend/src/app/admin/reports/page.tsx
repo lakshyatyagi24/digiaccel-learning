@@ -141,7 +141,7 @@ export default function AdminReportsPage() {
                               : "neutral"
                         }
                       >
-                        {row.status}
+                        {row.status.replace("_", " ")}
                       </Badge>
                     </td>
                     <td className="px-4 py-3 text-slate-600">
