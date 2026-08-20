@@ -1,0 +1,17 @@
+# <type>(<scope>): <subject>   (max 72 chars, imperative mood — "add" not "added")
+#
+# <body — the WHY, not the WHAT. Wrap at 100 chars. Optional for trivial changes.>
+#
+# --- type must be one of ---
+# feat      new capability
+# fix       bug fix
+# refactor  no behaviour change
+# perf      performance improvement
+# test      adding/fixing tests only
+# docs      documentation only
+# build     dependency/tooling/CI changes
+# chore     everything else (formatting, housekeeping)
+#
+# --- scope examples (this repo's domain modules) ---
+# auth, users, videos, questions, assignments, learning, reports,
+# ui, db, docs, ci

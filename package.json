@@ -1,0 +1,35 @@
+{
+  "name": "digiaccel-learning-assignment",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Video Learning + Interactive Quiz Builder — SDE II full-stack assessment",
+  "scripts": {
+    "prepare": "husky",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "setup:backend": "cd backend && npm install",
+    "setup:frontend": "cd frontend && npm install",
+    "setup": "npm run setup:backend && npm run setup:frontend",
+    "dev:backend": "cd backend && npm run start:dev",
+    "dev:frontend": "cd frontend && npm run dev",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:frontend": "cd frontend && npm run lint",
+    "test:backend": "cd backend && npm run test"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^15.2.10"
+  },
+  "lint-staged": {
+    "backend/**/*.ts": [
+      "bash -c 'cd backend && npx eslint --fix'",
+      "bash -c 'cd backend && npx prettier --write'"
+    ],
+    "frontend/**/*.{ts,tsx}": [
+      "bash -c 'cd frontend && npx eslint --fix'",
+      "bash -c 'cd frontend && npx prettier --write'"
+    ]
+  }
+}
